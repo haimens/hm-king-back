@@ -19,7 +19,7 @@ router.use(
         token_type_zero: [],
         token_type_one: [],
         token_type_two: [],
-        token_type_three: ['realm', 'lord']
+        token_type_three: ['realm', 'lord', 'tribute']
     })
 );
 
@@ -44,9 +44,11 @@ router.use("/forget", forgetRoute);
 
 const lordRoute = require('./lord.route');
 const realmRoute = require('./realm.route');
+const tributeRoute = require('./tribute.route');
 
 router.use('/lord', lordRoute);
 router.use('/realm', realmRoute);
+router.use('/tribute', tributeRoute);
 
 // App routes
 
