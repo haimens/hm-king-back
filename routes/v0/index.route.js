@@ -19,7 +19,7 @@ router.use(
         token_type_zero: [],
         token_type_one: [],
         token_type_two: [],
-        token_type_three: []
+        token_type_three: ['realm', 'lord']
     })
 );
 
@@ -42,10 +42,17 @@ router.use("/signup", signupRoute);
 router.use("/logout", logoutRoute);
 router.use("/forget", forgetRoute);
 
+const lordRoute = require('./lord.route');
+const realmRoute = require('./realm.route');
+
+router.use('/lord', lordRoute);
+router.use('/realm', realmRoute);
+
 // App routes
 
 router.use('/', async (req, res, next) => {
-    res.json({ status: false, message: 'KING V0 INDEX REACHED' });
+
+    res.json({status: false, message: 'KING V0 INDEX REACHED'});
 });
 
 module.exports = router;

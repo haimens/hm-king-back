@@ -11,6 +11,7 @@ const versions = ((pkg_info) => Array((parseInt(pkg_info.version.split('.')[0]) 
 
 router.use('/:version', async (req, res, next) => {
     try {
+
         const {version} = req.params;
         if (versions.indexOf(version) < 0) return func.throwError('VERSION NUM NOT SUPPORTED', 400);
         next();
