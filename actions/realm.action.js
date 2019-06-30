@@ -27,6 +27,19 @@ class VNRealmAction {
             throw e;
         }
     }
+
+    static async findRealmDetail(params, body, query) {
+        try {
+            const {realm_token} = params;
+            return await coreConn.coreRequest(
+                'GET',
+                ['realm', 'detail', realm_token],
+                {}, {}, {}
+            );
+        } catch (e) {
+            throw e;
+        }
+    }
 }
 
 module.exports = VNRealmAction;
