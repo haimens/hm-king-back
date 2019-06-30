@@ -15,7 +15,7 @@ router.post('/detail', async (req, res, next) => {
 
         res.json(resBody);
     } catch (e) {
-       next(e)
+        next(e)
     }
 });
 
@@ -38,7 +38,7 @@ router.get('/detail/:realm_token', async (req, res, next) => {
 
     try {
         const resBody = func.configSuccess(
-
+            await VNRealmAction.findRealmDetail(req.params, req.body, req.query)
         );
 
         res.json(resBody);
