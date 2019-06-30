@@ -40,6 +40,122 @@ class VNRealmAction {
             throw e;
         }
     }
+
+
+    static async modifyRealmDetail(params, body, query) {
+        try {
+            const {realm_token} = params;
+
+            return await coreConn.coreRequest(
+                'PATCH',
+                ['realm', 'detail', realm_token],
+                {}, {}, body
+            );
+
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    static async modifyRealmResource(params, body, query) {
+        try {
+
+            const {realm_token} = params;
+
+            return await coreConn.coreRequest(
+                'PATCH',
+                ['realm', 'resource', realm_token],
+                {}, {}, body
+            );
+
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    static async modifyEmailResource(params, body, query) {
+        try {
+            const {realm_token, email_resource_token} = params;
+            return await coreConn.coreRequest(
+                'PATCH',
+                ['realm', 'email', realm_token, email_resource_token],
+                {}, {}, body
+            );
+
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    static async modifyMessageResource(params, body, query) {
+        try {
+            const {realm_token, message_resource_token} = params;
+            return await coreConn.coreRequest(
+                'PATCH',
+                ['realm', 'message', realm_token, message_resource_token],
+                {}, {}, body
+            );
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    static async modifyPaymentResource(params, body, query) {
+        try {
+            const {realm_token, payment_resource_token} = params;
+            return await coreConn.coreRequest(
+                'PATCH',
+                ['realm', 'payment', realm_token, payment_resource_token],
+                {}, {}, body
+            );
+
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    static async findMessageResourceList(params, body, query) {
+        try {
+            const {realm_token} = params;
+
+            return await coreConn.coreRequest(
+                'GET',
+                ['all', 'message', realm_token],
+                query, {}, {}
+            );
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    static async findEmailResourceList(params, body, query) {
+        try {
+            const {realm_token} = params;
+            return await coreConn.coreRequest(
+                'GET',
+                ['all', 'email', realm_token],
+                query, {}, {}
+            );
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    static async findPaymentResourceList(params, body, query) {
+        try {
+            const {realm_token} = params;
+
+            return await coreConn.coreRequest(
+                'GET',
+                ['all', 'payment', realm_token],
+                query, {}, {}
+            );
+
+
+        } catch (e) {
+            throw e;
+        }
+    }
 }
 
 module.exports = VNRealmAction;

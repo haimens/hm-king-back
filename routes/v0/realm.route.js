@@ -52,7 +52,7 @@ router.get('/detail/:realm_token', async (req, res, next) => {
 router.patch('/detail/:realm_token', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
-            await VNRealmAction.modifyBasicRealmDetail(req.params, req.body, req.query),
+            await VNRealmAction.modifyRealmDetail(req.params, req.body, req.query),
             'REALM BASIC INFO UPDATED'
         );
 
@@ -67,7 +67,7 @@ router.patch('/resource/:realm_token', async (req, res, next) => {
 
     try {
         const resBody = func.configSuccess(
-            await VNRealmAction.modifyPrimaryResourceInRealm(req.params, req.body, req.query),
+            await VNRealmAction.modifyRealmResource(req.params, req.body, req.query),
             'REALM PRIMARY RESOURCE INFO UPDATED'
         );
         res.json(resBody);
@@ -119,6 +119,55 @@ router.patch('/payment/:realm_token/:payment_resource_token', async (req, res, n
         next(e);
     }
 
+});
+
+
+
+//10
+router.get('/all/email/:realm_token', async (req, res, next) => {
+
+    try {
+        const resBody = func.configSuccess(
+            await VNRealmAction.findEmailResourceList(req.params, req.body, req.query)
+        );
+
+        res.json(resBody);
+    } catch (e) {
+        next(e);
+    }
+
+});
+
+//11
+router.get('/all/message/:realm_token', async (req, res, next) => {
+
+    try {
+        const resBody = func.configSuccess(
+            await VNRealmAction.findMessageResourceList(req.params, req.body, req.query)
+        );
+
+        res.json(resBody);
+    } catch (e) {
+        next(e);
+    }
+
+});
+
+
+//12
+router.get('/all/payment/:realm_token', async (req, res, next) => {
+
+    try {
+        const resBody = func.configSuccess(
+            await VNRealmAction.findPaymentResourceList(
+                req.params, req.body, req.query
+            )
+        );
+
+        res.json(resBody);
+    } catch (e) {
+        next(e);
+    }
 });
 
 module.exports = router;
