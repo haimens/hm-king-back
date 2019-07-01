@@ -49,6 +49,60 @@ router.get('/detail/:realm_token', async (req, res, next) => {
 });
 
 
+//@POST
+//body:{twilio_account_id, twilio_auth_token, twilio_from_num}
+
+router.post('/message/:realm_token', async (req, res, next) => {
+    try {
+        const resBody = func.configSuccess(
+            await VNRealmAction.registerMessageResource(
+                req.params, req.body, req.query
+            )
+        );
+
+        res.json(resBody);
+    } catch (e) {
+        next(e);
+    }
+
+});
+
+
+//@POST
+//body:{}
+router.post('/email/:realm_token', async (req, res, next) => {
+    try {
+
+        const resBody = func.configSuccess(
+            await VNRealmAction.registerEmailResource(
+                req.params, req.body, req.query
+            )
+        );
+
+        res.json(resBody);
+    } catch (e) {
+        next(e);
+    }
+
+});
+
+router.post('/payment/:realm_token', async (req, res, next) => {
+    try {
+
+        const resBody = func.configSuccess(
+            await VNRealmAction.registerPaymentResource(
+                req.params, req.body, req.query
+            )
+        );
+
+        res.json(resBody);
+    } catch (e) {
+        next(e);
+    }
+
+});
+
+
 router.patch('/detail/:realm_token', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
@@ -60,8 +114,8 @@ router.patch('/detail/:realm_token', async (req, res, next) => {
     } catch (e) {
         next(e);
     }
-
 });
+
 
 router.patch('/resource/:realm_token', async (req, res, next) => {
 
@@ -120,7 +174,6 @@ router.patch('/payment/:realm_token/:payment_resource_token', async (req, res, n
     }
 
 });
-
 
 
 //10

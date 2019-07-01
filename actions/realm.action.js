@@ -120,7 +120,7 @@ class VNRealmAction {
 
             return await coreConn.coreRequest(
                 'GET',
-                ['all', 'message', realm_token],
+                ['realm', 'all', 'message', realm_token],
                 query, {}, {}
             );
         } catch (e) {
@@ -133,7 +133,7 @@ class VNRealmAction {
             const {realm_token} = params;
             return await coreConn.coreRequest(
                 'GET',
-                ['all', 'email', realm_token],
+                ['realm', 'all', 'email', realm_token],
                 query, {}, {}
             );
         } catch (e) {
@@ -147,7 +147,7 @@ class VNRealmAction {
 
             return await coreConn.coreRequest(
                 'GET',
-                ['all', 'payment', realm_token],
+                ['realm', 'all', 'payment', realm_token],
                 query, {}, {}
             );
 
@@ -155,6 +155,49 @@ class VNRealmAction {
         } catch (e) {
             throw e;
         }
+    }
+
+    static async registerMessageResource(params, body, query) {
+        try {
+            const {realm_token} = params;
+
+            return await coreConn.coreRequest(
+                'POST',
+                ['realm', 'message', realm_token],
+                {}, {}, body
+            );
+
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    static async registerEmailResource(params, body, query) {
+        try {
+            const {realm_token} = params;
+            return await coreConn.coreRequest(
+                'POST',
+                ['realm', 'email', realm_token],
+                {}, {}, body
+            )
+        } catch (e) {
+            throw e;
+        }
+
+    }
+
+    static async registerPaymentResource(params, body, query) {
+        try {
+            const {realm_token} = params;
+            return await coreConn.coreRequest(
+                'POST',
+                ['realm', 'payment', realm_token],
+                {}, {}, body
+            )
+        } catch (e) {
+            throw e;
+        }
+
     }
 }
 
