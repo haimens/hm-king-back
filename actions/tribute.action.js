@@ -29,6 +29,18 @@ class VNTributeAction {
         }
     }
 
+    static async modifyTributeRateDetail(params, body, query) {
+        try {
+            const {tribute_rate_token} = params;
+            return coreConn.coreRequest(
+                'PATCH',
+                ['tribute', 'rate', tribute_rate_token], {}, {}, body
+            );
+        } catch (e) {
+            throw e;
+        }
+    }
+
 }
 
 module.exports = VNTributeAction;
