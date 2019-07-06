@@ -19,7 +19,7 @@ router.use(
         token_type_zero: [],
         token_type_one: [],
         token_type_two: [],
-        token_type_three: ['realm', 'lord', 'tribute']
+        token_type_three: ['realm', 'lord', 'tribute', 'address', 'invoice']
     })
 );
 
@@ -51,11 +51,8 @@ const addressRoute = require('./address.route');
 router.use('/lord', lordRoute);
 router.use('/realm', realmRoute);
 router.use('/tribute', tributeRoute);
-
 router.use('/address', addressRoute);
 
-
-// App routes
 
 router.use('/', async (req, res, next) => {
 

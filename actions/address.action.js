@@ -5,6 +5,7 @@ class VNAddressAction {
 
     static async registerAddress(params, body, query) {
         try {
+
             return await coreConn.coreRequest(
                 'POST',
                 ['address', 'detail'],
