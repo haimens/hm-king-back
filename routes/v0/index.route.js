@@ -46,9 +46,14 @@ const lordRoute = require('./lord.route');
 const realmRoute = require('./realm.route');
 const tributeRoute = require('./tribute.route');
 
+const addressRoute = require('./address.route');
+
 router.use('/lord', lordRoute);
 router.use('/realm', realmRoute);
 router.use('/tribute', tributeRoute);
+
+router.use('/address', addressRoute);
+
 
 // App routes
 
