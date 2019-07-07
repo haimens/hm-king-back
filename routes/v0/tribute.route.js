@@ -84,4 +84,5 @@ router.post('/detail/:realm_token', async (req, res, next) => {
     }
 
 });
+
 module.exports = router;

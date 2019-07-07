@@ -61,10 +61,18 @@ class VNTributeAction {
             const {realm_token} = params;
             if (!realm_token) func.throwErrorWithMissingParam('realm_token');
 
-            return coreConn.coreRequest(
+            const {note, amount} = body;
+
+            const {coin_token} = await coreConn.coreRequest(
+                'POST',
+                ['coin', 'detail'],
+                query, {}, {amount}
+            );
+
+            return await coreConn.coreRequest(
                 'POST',
                 ['tribute', 'detail', realm_token],
-                {}, {}, body
+                {}, {}, {note, coin_token}
             );
         } catch (e) {
             throw e;
