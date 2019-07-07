@@ -8,10 +8,19 @@ class VNInvoiceAction {
             const {realm_token} = params;
 
             if (!realm_token) func.throwErrorWithMissingParam('realm_token');
+
+            const {amount} = body;
+            if (!amount) func.throwErrorWithMissingParam('amount');
+
+            const {coin_token} = await coreConn.coreRequest(
+                'POST',
+                ['coin', 'detail'],
+                {}, {}, {amount}
+            );
             return await coreConn.coreRequest(
                 'POST',
                 ['invoice', 'detail', realm_token],
-                {}, {}, body
+                {}, {}, {coin_token}
             );
 
 
