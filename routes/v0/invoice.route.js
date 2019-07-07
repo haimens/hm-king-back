@@ -68,4 +68,19 @@ router.patch('/detail/:realm_token/:invoice_token', async (req, res, next) => {
     }
 });
 
+
+router.get('/sum/realm_token/:realm_token', async (req, res, next) => {
+    try {
+        const resBody = func.configSuccess(
+            await VNInvoiceAction.findInvoiceSumWithRealm(
+                req.params, req.body, req.query
+            )
+        );
+
+        res.json(resBody);
+    } catch (e) {
+        throw e;
+    }
+});
+
 module.exports = router;

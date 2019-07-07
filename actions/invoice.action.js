@@ -62,6 +62,21 @@ class VNInvoiceAction {
             throw e;
         }
     }
+
+    static async findInvoiceSumWithRealm(params, body, query) {
+        try {
+            const {realm_token} = params;
+            if (!realm_token) func.throwErrorWithMissingParam('realm_token');
+
+            return await coreConn.coreRequest(
+                'GET',
+                ['invoce', 'sum', 'realm', realm_token],
+                query, {}, {}
+            );
+        } catch (e) {
+            throw e;
+        }
+    }
 }
 
 module.exports = VNInvoiceAction;

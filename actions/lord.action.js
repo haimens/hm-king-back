@@ -10,7 +10,7 @@ class VNLordAction {
         try {
 
             const {realm_token} = params;
-            return coreConn.coreRequest(
+            return await coreConn.coreRequest(
                 'POST',
                 ['lord', 'detail', realm_token], {}, {}, body
             );
@@ -27,7 +27,7 @@ class VNLordAction {
         try {
 
             const {realm_token} = params;
-            return coreConn.coreRequest(
+            return await coreConn.coreRequest(
                 'GET',
                 ['lord', 'all', 'detail', 'realm', realm_token],
                 query, {}, {}
@@ -39,11 +39,25 @@ class VNLordAction {
 
     static async findLordListInSystem(params, body, query) {
         try {
-            return coreConn.coreRequest(
+            return await coreConn.coreRequest(
                 'GET',
                 ['lord', 'all', 'detail', 'system'],
                 query, {}, {}
             )
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    static async modifyLordDetail(params, body, query) {
+        try {
+            const {lord_token} = params;
+            return await coreConn.coreRequest(
+                'PATCH',
+                ['lord', 'detail', lord_token], {}, {}, body
+            );
+
+
         } catch (e) {
             throw e;
         }

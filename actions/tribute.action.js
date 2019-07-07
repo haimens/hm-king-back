@@ -7,7 +7,7 @@ class VNTributeAction {
 
     static async registerTributeRate(params, body, query) {
         try {
-            return coreConn.coreRequest(
+            return await coreConn.coreRequest(
                 'POST',
                 ['tribute', 'rate'],
                 {}, {}, body
@@ -19,7 +19,7 @@ class VNTributeAction {
 
     static async findTributeRateList(params, body, query) {
         try {
-            return coreConn.coreRequest(
+            return await coreConn.coreRequest(
                 'GET',
                 ['tribute', 'all', 'rate'],
                 query, {}, {}
@@ -32,7 +32,7 @@ class VNTributeAction {
     static async modifyTributeRateDetail(params, body, query) {
         try {
             const {tribute_rate_token} = params;
-            return coreConn.coreRequest(
+            return await coreConn.coreRequest(
                 'PATCH',
                 ['tribute', 'rate', tribute_rate_token], {}, {}, body
             );
@@ -46,7 +46,7 @@ class VNTributeAction {
         try {
             const {realm_token} = params;
             if (!realm_token) func.throwErrorWithMissingParam('realm_token');
-            return coreConn.coreRequest(
+            return await coreConn.coreRequest(
                 'GET',
                 ['tribute', 'all', 'detail', 'realm', realm_token],
                 query, {}, {}
