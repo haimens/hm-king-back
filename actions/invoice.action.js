@@ -10,7 +10,8 @@ class VNInvoiceAction {
             if (!realm_token) func.throwErrorWithMissingParam('realm_token');
             return await coreConn.coreRequest(
                 'POST',
-                ['invoice', 'detail', realm_token]
+                ['invoice', 'detail', realm_token],
+                {}, {}, body
             );
 
 
