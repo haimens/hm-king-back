@@ -54,4 +54,18 @@ router.get('/all/detail/system', async (req, res, next) => {
     }
 });
 
+router.patch('/detail/:realm_token/:invoice_token', async (req, res, next) => {
+    try {
+        const resBody = func.configSuccess(
+            await VNInvoiceAction.modifyInvoiceDetail(
+                req.params, req.body, req.query
+            )
+        );
+
+        res.json(resBody);
+    } catch (e) {
+        throw e;
+    }
+});
+
 module.exports = router;

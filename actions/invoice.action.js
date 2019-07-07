@@ -8,7 +8,7 @@ class VNInvoiceAction {
             const {realm_token} = params;
 
             if (!realm_token) func.throwErrorWithMissingParam('realm_token');
-            return coreConn.coreRequest(
+            return await coreConn.coreRequest(
                 'POST',
                 ['invoice', 'detail', realm_token]
             );
@@ -26,7 +26,7 @@ class VNInvoiceAction {
 
             if (!realm_token) func.throwErrorWithMissingParam('realm_token');
 
-            return coreConn.coreRequest(
+            return await coreConn.coreRequest(
                 'GET',
                 ['invoice', 'all', 'detail', 'realm', realm_token],
                 query, {}, {}
@@ -39,10 +39,24 @@ class VNInvoiceAction {
 
     static async findInvoiceListInSystem(params, body, query) {
         try {
-            return coreConn.coreRequest(
+            return await coreConn.coreRequest(
                 'GET',
                 ['invoice', 'all', 'detail', 'system'],
                 query, {}, {}
+            );
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    static async modifyInvoiceDetail(params, body, query) {
+        try {
+            const {realm_token, invoice_token} = params;
+            if (!realm_token) func.throwErrorWithMissingParam('realm_token');
+            if (!invoice_token) func.throwErrorWithMissingParam('invoice_token');
+            return await coreConn.coreRequest(
+                'PATCH',
+                ['invoice', 'detail', realm_token, invoice_token]
             );
         } catch (e) {
             throw e;
