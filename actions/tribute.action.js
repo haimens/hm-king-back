@@ -41,6 +41,36 @@ class VNTributeAction {
         }
     }
 
+
+    static async findTributeDetailList(params, body, query) {
+        try {
+            const {realm_token} = params;
+            if (!realm_token) func.throwErrorWithMissingParam('realm_token');
+            return coreConn.coreRequest(
+                'GET',
+                ['tribute', 'all', 'detail', 'realm', realm_token],
+                query, {}, {}
+            );
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    static async registerTributeDetail(params, body, query) {
+        try {
+            const {realm_token} = params;
+            if (!realm_token) func.throwErrorWithMissingParam('realm_token');
+
+            return coreConn.coreRequest(
+                'POST',
+                ['tribute', 'detail', realm_token],
+                {}, {}, body
+            );
+        } catch (e) {
+            throw e;
+        }
+    }
+
 }
 
 module.exports = VNTributeAction;
