@@ -5,7 +5,7 @@ const func = require('od-utility');
 
 const VNInvoiceAction = require('../../actions/invoice.action');
 
-router.post('/detail', async (req, res, next) => {
+router.post('/detail/:realm_token', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
             await VNInvoiceAction.registerInvoice(
