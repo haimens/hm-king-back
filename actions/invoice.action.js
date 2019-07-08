@@ -87,6 +87,18 @@ class VNInvoiceAction {
             throw e;
         }
     }
+
+    static async findInvoiceSumInSystem(params, body, query) {
+        try {
+            return await coreConn.coreRequest(
+                'GET',
+                ['invoice', 'sum', 'system'],
+                query, {}, {}
+            );
+        } catch (e) {
+            throw e;
+        }
+    }
 }
 
 module.exports = VNInvoiceAction;
