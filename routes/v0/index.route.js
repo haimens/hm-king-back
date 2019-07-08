@@ -47,12 +47,13 @@ const realmRoute = require('./realm.route');
 const tributeRoute = require('./tribute.route');
 
 const addressRoute = require('./address.route');
+const invoiceRoute = require('./invoice.route');
 
 router.use('/lord', lordRoute);
 router.use('/realm', realmRoute);
 router.use('/tribute', tributeRoute);
 router.use('/address', addressRoute);
-
+router.use('/invoice', invoiceRoute);
 
 router.use('/', async (req, res, next) => {
 
