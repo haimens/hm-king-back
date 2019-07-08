@@ -80,7 +80,7 @@ class VNInvoiceAction {
 
             return await coreConn.coreRequest(
                 'GET',
-                ['invoce', 'sum', 'realm', realm_token],
+                ['invoice', 'sum', 'realm', realm_token],
                 query, {}, {}
             );
         } catch (e) {
