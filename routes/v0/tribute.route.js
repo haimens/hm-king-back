@@ -85,4 +85,18 @@ router.post('/detail/:realm_token', async (req, res, next) => {
 
 });
 
+
+router.get('/sum/realm/:realm_token', async (req, res, next) => {
+    try {
+        const resBody = func.configSuccess(
+            await VNTributeAction.findTributeSum(
+                req.params, req.body, req.query
+            )
+        );
+        res.json(resBody);
+    } catch (e) {
+        next(e);
+    }
+});
+
 module.exports = router;

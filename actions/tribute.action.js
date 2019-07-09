@@ -79,6 +79,21 @@ class VNTributeAction {
         }
     }
 
+    static async findTributeSum(params, body, query) {
+        try {
+            const {realm_token} = params;
+            if (!realm_token) func.throwErrorWithMissingParam('realm_token');
+
+            return await coreConn.coreRequest(
+                'GET',
+                ['tribute', 'sum', 'realm', realm_token],
+                query, {}, {}
+            );
+        } catch (e) {
+            throw e;
+        }
+    }
+
 }
 
 module.exports = VNTributeAction;
