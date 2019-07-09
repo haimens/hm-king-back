@@ -99,4 +99,18 @@ router.get('/sum/realm/:realm_token', async (req, res, next) => {
     }
 });
 
+
+router.patch('/detail/:realm_token/:invoice_token', async (req, res, next) => {
+    try {
+        const resBody = func.configSuccess(
+            await VNTributeAction.modifyTributeDetail(
+                req.params, req.body, req.query
+            )
+        );
+
+        res.json(resBody);
+    } catch (e) {
+        next(e);
+    }
+});
 module.exports = router;

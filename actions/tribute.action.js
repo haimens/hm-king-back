@@ -79,6 +79,21 @@ class VNTributeAction {
         }
     }
 
+    static async modifyTributeDetail(params, body, query) {
+        try {
+            const {realm_token, invoice_token} = params;
+
+            return await coreConn.coreRequest(
+                'PATCH',
+                ['tribute', 'detail', realm_token, invoice_token],
+                {}, {}, body
+            );
+
+        } catch (e) {
+            throw e;
+        }
+    }
+
     static async findTributeSum(params, body, query) {
         try {
             const {realm_token} = params;
