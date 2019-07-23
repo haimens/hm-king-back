@@ -66,7 +66,7 @@ class VNInvoiceAction {
             if (!invoice_token) func.throwErrorWithMissingParam('invoice_token');
             return await coreConn.coreRequest(
                 'PATCH',
-                ['invoice', 'detail', realm_token, invoice_token]
+                ['invoice', 'detail', realm_token, invoice_token], {}, {}, body
             );
         } catch (e) {
             throw e;

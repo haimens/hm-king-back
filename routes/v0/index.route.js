@@ -19,7 +19,7 @@ router.use(
         token_type_zero: [],
         token_type_one: [],
         token_type_two: [],
-        token_type_three: ['realm', 'lord', 'tribute', 'address', 'invoice']
+        token_type_three: ['realm', 'lord', 'tribute', 'address', 'invoice', 'email']
     })
 );
 
@@ -49,11 +49,14 @@ const tributeRoute = require('./tribute.route');
 const addressRoute = require('./address.route');
 const invoiceRoute = require('./invoice.route');
 
+const emailRoute = require('./email.route');
+
 router.use('/lord', lordRoute);
 router.use('/realm', realmRoute);
 router.use('/tribute', tributeRoute);
 router.use('/address', addressRoute);
 router.use('/invoice', invoiceRoute);
+router.use('/email', emailRoute);
 
 router.use('/', async (req, res, next) => {
 
