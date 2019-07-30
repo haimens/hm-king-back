@@ -20,5 +20,19 @@ router.post('/send/lord/:realm_token/:lord_token', async (req, res, next) => {
     }
 });
 
+router.post('/send/realm/:realm_token', async (req, res, next) => {
+    try {
+        const resBody = func.configSuccess(
+            await VNEmailAction.sendEmailWithRealm(
+                req.params, req.body, req.query, req.king.verify_info
+            )
+        );
+
+        res.json(resBody);
+    } catch (e) {
+        next(e);
+    }
+});
+
 
 module.exports = router;

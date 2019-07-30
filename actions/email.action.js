@@ -12,6 +12,15 @@ class VNEmailAction {
             {}, {}, body
         );
     }
+
+    static async sendEmailWithRealm(params, body, query, auth) {
+        const {realm_token} = params;
+        return await coreConn.coreRequest(
+            'POST',
+            ['email', 'send', 'realm', realm_token],
+            {}, {}, body
+        );
+    }
 }
 
 module.exports = VNEmailAction;
